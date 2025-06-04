@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ... твои переменные ... */
+  }
+
+  .dark {
+    /* ... dark переменные ... */
+  }
+
+  body {
+    @apply bg-black text-yellow-50;
+    font-family: 'Playfair Display', serif;
+    cursor: url("data:image/svg+xml,%3Csvg width='20' height='20' ..."), auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+.tilt-card {
+  perspective: 1200px;
+}
+.tilt-inner {
+  transition: transform 0.3s cubic-bezier(.21,.6,.45,1.36), box-shadow 0.3s;
+  will-change: transform;
+}
+.tilt-card:hover .tilt-inner {
+  box-shadow: 0 12px 24px 0 #000a, 0 1.5px 12px 0 #ffe06644;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700;
+  }
+  50% {
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+  }
+}
+.glow-text {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Masonry fix: убирает артефакты между столбцами */
+.columns-1, .columns-2, .columns-3 {
+  gap: 1.5rem !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+html { scroll-behavior: smooth; }
